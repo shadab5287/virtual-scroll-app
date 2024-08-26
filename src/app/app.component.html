@@ -1,2 +1,9 @@
-
-<app-virtual-scroll></app-virtual-scroll>
+<!-- <app-virtual-scroll></app-virtual-scroll> -->
+<div class="col-md-12 text-center mt-3">
+    <div class="btn-group text-center" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="activeViewToggle('table')" [ngClass]="activeView ==='table' ? 'active': ''">Table</button>
+        <button type="button" class="btn btn-secondary" (click)="activeViewToggle('card')" [ngClass]="activeView ==='card' ? 'active': ''">Card</button>
+      </div>
+</div>
+<app-scroll-card *ngIf="activeView==='card'"></app-scroll-card>
+<app-virtual-scroll *ngIf="activeView==='table'"></app-virtual-scroll>

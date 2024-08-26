@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'virtual-scroll-app';
+  activeView = "table"
+
+  activeViewToggle(type:string){
+    this.activeView = type
+}
+
 }

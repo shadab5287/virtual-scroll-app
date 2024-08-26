@@ -1,17 +1,47 @@
-<div class="container p-5">
+<div class="container py-5">
     <div class="row">
+        <div class="col-md-12 text-center mb-4">
+            <h2>Virtual Scrolling Example</h2>
+            <p class="lead">Loaded <span class="font-weight-bold">{{ itemCount }}</span> items out of <span
+                    class="font-weight-bold">{{ totalItems }}</span> total items.</p>
+        </div>
         <div class="col-md-12">
-            <h1>Loaded {{ itemCount }} items out of {{ totalItems }} total items.</h1>
-            <cdk-virtual-scroll-viewport itemSize="50" class="viewport" (scrolledIndexChange)="onScroll()">
-                <div *cdkVirtualFor="let item of items" class="item">
-                    {{ item }}
+            <div class="card shadow-sm">
+                <div class="card-body p-0">
+                    <!-- Fixed Header Table -->
+                    <div class="table-container">
+                        <table class="table mb-0 fixed-header">
+                            <thead class="header-row">
+                                <tr>
+                                    <th style="width: 33.33%;">#</th>
+                                    <th style="width: 33.33%;">First</th>
+                                    <th style="width: 34.33%;">Rating</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <!-- Scrollable Content -->
+                        <cdk-virtual-scroll-viewport itemSize="50" class="viewport" (scrolledIndexChange)="onScroll()">
+                            <table class="table mb-0">
+                                <tbody>
+                                    <tr *cdkVirtualFor="let item of items; let i = index">
+                                        <th style="width: 33.33%;">{{ i + 1 }}</th>
+                                        <td style="width: 33.33%;">{{ item.name }}</td>
+                                        <td style="width: 30.33%;">{{ item.rating }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="loading" class="loading-spinner py-3 text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </cdk-virtual-scroll-viewport>
+                    </div>
                 </div>
-                <div *ngIf="loading" class="loading-spinner">Loading...</div>
-            </cdk-virtual-scroll-viewport>
-
-            <div class="info">
-                
             </div>
+        </div>
+        <div class="col-md-12 text-center mt-4">
+            <p class="text-muted">Scroll down to load more items automatically.</p>
         </div>
     </div>
 </div>

@@ -61,6 +61,7 @@ export class VirtualScrollComponent implements OnInit {
     setTimeout(() => {
       this.mockDataService.getItems(this.itemCount, this.batchSize).subscribe(data => {
         this.items = [...this.items, ...data];
+        console.log(this.items)
         this.itemCount += data.length;
         this.loading = false;
       }, error => {
