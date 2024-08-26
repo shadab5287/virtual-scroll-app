@@ -1,0 +1,17 @@
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Loaded {{ itemCount }} items out of {{ totalItems }} total items.</h1>
+            <cdk-virtual-scroll-viewport itemSize="50" class="viewport" (scrolledIndexChange)="onScroll()">
+                <div *cdkVirtualFor="let item of items" class="item">
+                    {{ item }}
+                </div>
+                <div *ngIf="loading" class="loading-spinner">Loading...</div>
+            </cdk-virtual-scroll-viewport>
+
+            <div class="info">
+                
+            </div>
+        </div>
+    </div>
+</div>
