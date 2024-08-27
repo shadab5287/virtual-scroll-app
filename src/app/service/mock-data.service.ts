@@ -16,7 +16,6 @@ export class MockDataService {
 
   getItems(start: number, count: number): Observable<any[]> {
     // Simulate network delay
-    console.log(start,count)
     return new Observable(observer => {
       setTimeout(() => {
         observer.next(this.data.slice(start, start + count));
