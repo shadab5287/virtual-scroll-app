@@ -1,9 +1,25 @@
-<!-- <app-virtual-scroll></app-virtual-scroll> -->
-<div class="col-md-12 text-center mt-3">
-    <div class="btn-group text-center" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" (click)="activeViewToggle('table')" [ngClass]="activeView ==='table' ? 'active': ''">Table</button>
-        <button type="button" class="btn btn-secondary" (click)="activeViewToggle('card')" [ngClass]="activeView ==='card' ? 'active': ''">Card</button>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Virtual Scrolling Example</h2>
+      <p class="lead">Loaded <span class="font-weight-bold">{{ itemCount }}</span> items out of <span
+          class="font-weight-bold">{{ totalItems }}</span> total items.</p>
+    </div>
+    <div class="col-md-6 mb-3" >
+      <div class="btn-group text-center" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="activeViewToggle('table')"
+          [ngClass]="activeView ==='table' ? 'active': ''">Table</button>
+        <button type="button" class="btn btn-secondary" (click)="activeViewToggle('card')"
+          [ngClass]="activeView ==='card' ? 'active': ''">Card</button>
       </div>
+    </div>
+    <div class="col-md-12">
+      <app-scroll-card *ngIf="activeView==='card'" [items]="items"  [loading]="loading"
+         (loadMore)="onScrollEnd()">
+      </app-scroll-card>
+      <app-virtual-scroll *ngIf="activeView==='table'" [items]="items" [loading]="loading"
+        (loadMore)="onScrollEnd()">
+      </app-virtual-scroll>
+    </div>
+  </div>
 </div>
-<app-scroll-card *ngIf="activeView==='card'"></app-scroll-card>
-<app-virtual-scroll *ngIf="activeView==='table'"></app-virtual-scroll>

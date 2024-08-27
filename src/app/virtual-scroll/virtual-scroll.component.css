@@ -92,3 +92,6 @@
   width: 100%;
   border-collapse: collapse;
 }
+.col-md-12{
+  padding: 0px;
+}

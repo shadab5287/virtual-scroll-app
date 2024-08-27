@@ -1,0 +1,17 @@
+.mb-3{
+    text-align: end;
+}
+
+@media (max-width: 758px){
+    .mb-3{
+        text-align: initial;
+    }
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active:focus,
+.btn-secondary:not(:disabled):not(.disabled).active:focus {
+    box-shadow: none;
+    background:#545b62 ;
+    color: #fff;
+}
+
